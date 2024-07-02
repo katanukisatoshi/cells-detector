@@ -48,35 +48,35 @@ python detect_green_cells.py --image_path path/to/your/image.jpg --num_squares a
 
 ## Functions
 
-### \`load_and_convert_image(image_path)\`
+### `load_and_convert_image(image_path)`
 
 Loads and converts an image to grayscale.
 
-### \`detect_edges(gray_image, threshold1=50, threshold2=150)\`
+### `detect_edges(gray_image, threshold1=50, threshold2=150)`
 
 Detects edges in a grayscale image using the Canny algorithm.
 
-### \`detect_lines(edges, threshold=100, min_line_length=100, max_line_gap=10)\`
+### `detect_lines(edges, threshold=100, min_line_length=100, max_line_gap=10)`
 
 Detects lines in an edge-detected image using the Hough Line Transform.
 
-### \`merge_nearest_lines(lines, image, threshold=50)\`
+### `merge_nearest_lines(lines, image, threshold=50)`
 
 Merges nearby lines to reduce redundancy.
 
-### \`index_and_crop_squares(image, horizontal_lines, vertical_lines)\`
+### `index_and_crop_squares(image, horizontal_lines, vertical_lines)`
 
 Indexes and crops squares based on detected and merged lines.
 
-### \`detect_green_cells(image, min_area_threshold=100)\`
+### `detect_green_cells(image, min_area_threshold=100)`
 
 Detects green cells in an image and filters them based on area.
 
-### \`index_squares(image, horizontal_lines, vertical_lines)\`
+### `index_squares(image, horizontal_lines, vertical_lines)`
 
 Indexes squares on the image.
 
-### \`process_and_display_images(image_path, num_squares='all', min_area_threshold=100)\`
+### `process_and_display_images(image_path, num_squares='all', min_area_threshold=100)`
 
 Processes the image, detects edges and lines, merges lines, indexes and crops squares, detects green cells, and displays the results.
 
@@ -99,9 +99,9 @@ Processes the image, detects edges and lines, merges lines, indexes and crops sq
 Contributions are welcome! Please follow these steps to contribute:
 
 1. Fork the repository.
-2. Create a new branch (\`git checkout -b feature/your-feature-name\`).
-3. Commit your changes (\`git commit -m 'Add some feature'\`).
-4. Push to the branch (\`git push origin feature/your-feature-name\`).
+2. Create a new branch (`git checkout -b feature/your-feature-name`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/your-feature-name`).
 5. Open a Pull Request.
 
 ## License
