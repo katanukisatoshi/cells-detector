@@ -4,9 +4,9 @@ This project provides a Python-based approach to detect and count green cells wi
 
 Medium Post:
 
-[ - Detecting Green Cells in Grid Squares: A Step-by-Step Guide with OpenCV and Python (Part 1)](https://medium.com/@katanuki/analyzing-and-processing-grid-images-with-opencv-part-1-d5c42ab0703c)
+[Detecting Green Cells in Grid Squares: A Step-by-Step Guide with OpenCV and Python (Part 1)](https://medium.com/@katanuki/analyzing-and-processing-grid-images-with-opencv-part-1-d5c42ab0703c)
 
-[ - Detecting Green Cells in Grid Squares: A Step-by-Step Guide with OpenCV and Python (Part 2)](https://medium.com/@katanuki/analyzing-and-processing-grid-images-with-opencv-part-2-31408b5671a6)
+[Detecting Green Cells in Grid Squares: A Step-by-Step Guide with OpenCV and Python (Part 2)](https://medium.com/@katanuki/analyzing-and-processing-grid-images-with-opencv-part-2-31408b5671a6)
 
 ## Table of Contents
 
