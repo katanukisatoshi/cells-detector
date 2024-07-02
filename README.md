@@ -2,6 +2,10 @@
 
 This project provides a Python-based approach to detect and count green cells within grid squares of an image. Utilizing the powerful OpenCV library, various image processing tasks such as edge detection, line detection, and color-based segmentation are performed.
 
+Medium Post:
+[ - Detecting Green Cells in Grid Squares: A Step-by-Step Guide with OpenCV and Python (Part 1)](https://medium.com/@katanuki/analyzing-and-processing-grid-images-with-opencv-part-1-d5c42ab0703c)
+[ - Detecting Green Cells in Grid Squares: A Step-by-Step Guide with OpenCV and Python (Part 2)](https://medium.com/@katanuki/analyzing-and-processing-grid-images-with-opencv-part-2-31408b5671a6)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
