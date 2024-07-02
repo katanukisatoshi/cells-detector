@@ -24,11 +24,42 @@ This project demonstrates how to process an image to detect green cells within g
 
 ## Installation
 
+Follow these steps to set up your development environment and run the project.
+
+### Prerequisites
+
+Ensure you have Python installed on your system. This project requires Python 3.6 or newer.
+
+### Setting Up a Virtual Environment
+
 To get started with this project, clone the repository and install the required dependencies.
 
 ```bash
 git clone https://github.com/takanukisatoshi/green-cell-detection.git
 cd green-cell-detection
+```
+
+It's recommended to use a virtual environment to manage the dependencies for your project. You can set up a virtual environment using the following commands:
+
+```bash
+# Install virtualenv if it's not already installed
+pip install virtualenv
+
+# Create a virtual environment
+virtualenv venv
+
+# Activate the virtual environment
+# On Windows
+venv\Scripts\activate
+# On Unix or MacOS
+source venv/bin/activate
+```
+
+### Installing Dependencies
+
+Once your virtual environment is active, you can install the required dependencies by running:
+
+```bash
 pip install -r requirements.txt
 ```
 
