@@ -36,15 +36,15 @@ pip install -r requirements.txt
 
 To run the script, use the following command:
 
-\`\`\`bash
+```bash
 python detect_green_cells.py --image_path path/to/your/image.jpg --num_squares all --min_area_threshold 100
-\`\`\`
+```
 
 ### Arguments
 
-- \`--image_path\`: Path to the input image (required).
-- \`--num_squares\`: Number of squares to process (default: 'all').
-- \`--min_area_threshold\`: Minimum area threshold for detecting green cells (default: 100).
+- `--image_path`: Path to the input image (required).
+- `--num_squares`: Number of squares to process (default: 'all').
+- `--min_area_threshold`: Minimum area threshold for detecting green cells (default: 100).
 
 ## Functions
 
