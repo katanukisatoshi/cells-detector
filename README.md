@@ -26,11 +26,11 @@ This project demonstrates how to process an image to detect green cells within g
 
 To get started with this project, clone the repository and install the required dependencies.
 
-\`\`\`bash
+```bash
 git clone https://github.com/takanukisatoshi/green-cell-detection.git
 cd green-cell-detection
 pip install -r requirements.txt
-\`\`\`
+```
 
 ## Usage
 
@@ -43,8 +43,8 @@ python detect_green_cells.py --image_path path/to/your/image.jpg --num_squares a
 ### Arguments
 
 - `--image_path`: Path to the input image (required).
-- `--num_squares`: Number of squares to process (default: 'all').
-- `--min_area_threshold`: Minimum area threshold for detecting green cells (default: 100).
+- `--num_squares`: Number of squares to process (default: `'all'`).
+- `--min_area_threshold`: Minimum area threshold for detecting green cells (default: `100`).
 
 ## Functions
 
