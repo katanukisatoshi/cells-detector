@@ -83,16 +83,16 @@ Processes the image, detects edges and lines, merges lines, indexes and crops sq
 ## Examples
 
 ### Original, Edges, Detected Lines & Merged Lines
-![Figure 01](examples/figure_01.png)
+![Figure 01](examples/figure_1.png)
 
 ### Indexed Squares
-![Figure 02](examples/figure_02.png)
+![Figure 02](examples/figure_2.png)
 
 ### Sample Cropped Squares
-![Figure 03](examples/figure_03.png)
+![Figure 03](examples/figure_3.png)
 
 ### Detected Green Cells
-![Figure 04](examples/figure_04.png)
+![Figure 04](examples/figure_4.png)
 
 ## Contributing
 
