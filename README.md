@@ -96,6 +96,9 @@ Processes the image, detects edges and lines, merges lines, indexes and crops sq
 
 ## Contributing
 
+Special Thank to 
+- Master Huy Nguyen Tien Anh - Ho Chi Minh City - University of Sciences 
+
 Contributions are welcome! Please follow these steps to contribute:
 
 1. Fork the repository.
