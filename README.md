@@ -32,11 +32,11 @@ This project demonstrates how to process an image to detect green cells within g
 
 Follow these steps to set up your development environment and run the project.
 
-### Prerequisites
+## Prerequisites
 
 Ensure you have Python installed on your system. This project requires Python 3.6 or newer.
 
-### Setting Up a Virtual Environment
+## Setting Up a Virtual Environment
 
 To get started with this project, clone the repository and install the required dependencies.
 
@@ -61,7 +61,7 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### Installing Dependencies
+## Installing Dependencies
 
 Once your virtual environment is active, you can install the required dependencies by running:
 
