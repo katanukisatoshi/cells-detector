@@ -35,7 +35,8 @@ This project demonstrates how to process an image to detect green cells within g
 
 **- Image Cropping**: Crop images based on detected lines and save the results.
 
-**- Dectect Green Cells**: Detecting green cells within each square/
+**- Dectect Green Cells**: Detecting green cells within each square.
+
 
 
 ## Prerequisites
