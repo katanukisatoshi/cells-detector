@@ -13,11 +13,11 @@ class SquareDisplayer:
         return x_start, y_start, x_end - x_start, y_end - y_start
 
     @staticmethod
-    def show_cropped_squares(image, squares, margin=10, min_area_threshold=100):
+    def show_cropped_squares(image, squares, margin=10, min_area_threshold=100, save_path=None):
         num_squares = len(squares)
         cols = 4  # Number of columns in the grid
         rows = num_squares // cols + (num_squares % cols > 0)  # Calculate the number of rows based on the number of images and columns
-
+    
         plt.figure(figsize=(15, 15))
         
         for i, (pts, (x, y, width, height)) in enumerate(squares):
@@ -30,8 +30,11 @@ class SquareDisplayer:
             plt.title(f'Square {i+1} (Cells: {green_cells_count})')
         
         plt.tight_layout()
-        plt.show()
-
+        
+        if save_path:
+            plt.savefig(save_path)
+        else:
+            plt.show()
 
 class SquareIdentifier:
     @staticmethod

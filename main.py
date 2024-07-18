@@ -8,13 +8,13 @@ from apps.line_processor import LineDetector, LineMerger, LineFilter, LineHighli
 from apps.intersection_finder import IntersectionFinder
 from apps.square_processor import SquareIdentifier, SquareDisplayer
 
-def main(image_path, output_path, edge_threshold1, edge_threshold2, hough_threshold, min_line_length, max_line_gap, merge_threshold, gap_threshold_top, gap_threshold_bottom, gap_threshold_left, gap_threshold_right, margin, aspect_ratio_tolerance, min_area, min_area_threshold):
+def main(input_path, cropped_path, output_path, edge_threshold1, edge_threshold2, hough_threshold, min_line_length, max_line_gap, merge_threshold, gap_threshold_top, gap_threshold_bottom, gap_threshold_left, gap_threshold_right, margin, aspect_ratio_tolerance, min_area, min_area_threshold):
 
     # Step 1: Preprocess the original image and crop potential area
-    image, gray_image = ImageLoader.load_and_convert_image(image_path)
+    image, gray_image = ImageLoader.load_and_convert_image(input_path)
 
     # Display the original image
-    ImageDisplayer.display_image(image, 'Original Image')
+    #ImageDisplayer.display_image(image, 'Original Image')
 
     # Display the grayscale image
     #ImageDisplayer.display_gray_image(gray_image, 'Grayscale Image')
@@ -37,7 +37,7 @@ def main(image_path, output_path, edge_threshold1, edge_threshold2, hough_thresh
     # Merge nearest lines
     if lines is not None:
         image_with_merged_lines, merged_horizontal_lines, merged_vertical_lines = LineMerger.merge_nearest_lines(lines, image, threshold=merge_threshold)
-        ImageDisplayer.display_image(image_with_merged_lines, 'Merged Lines')
+        #ImageDisplayer.display_image(image_with_merged_lines, 'Merged Lines')
 
         # Filter and highlight nearest lines to center in each step
         # Top lines
@@ -64,7 +64,8 @@ def main(image_path, output_path, edge_threshold1, edge_threshold2, hough_thresh
         image_with_filtered_left_lines = LineHighlighter.highlight_nearest_center_line_after_filtering(image_with_filtered_left_lines, filtered_left_lines, is_horizontal=False)
         #ImageDisplayer.display_image(image_with_filtered_left_lines, 'Filtered Left Lines Colored and Nearest Highlighted')
         
-        ImageDisplayer.display_image(image_with_filtered_left_lines, 'Filtered All Lines Colored and Nearest Highlighted')
+        # IMPORTANT
+        #ImageDisplayer.display_image(image_with_filtered_left_lines, 'Filtered All Lines Colored and Nearest Highlighted')
 
         # Find the nearest lines to the center from each side
         nearest_top_line = min(filtered_top_lines, key=lambda y: abs(y - image.shape[0] // 2))
@@ -74,23 +75,23 @@ def main(image_path, output_path, edge_threshold1, edge_threshold2, hough_thresh
 
         # Cover the area created by those nearest highlighted lines
         image_with_covered_area = ImageCropper.cover_area_by_nearest_lines(image_with_filtered_left_lines, nearest_top_line, nearest_bottom_line, nearest_left_line, nearest_right_line, color=(255, 0, 0), thickness=-1)
-        ImageDisplayer.display_image(image_with_covered_area, 'Covered Area by Nearest Highlighted Lines')
+        #ImageDisplayer.display_image(image_with_covered_area, 'Covered Area by Nearest Highlighted Lines')
 
         # Crop the area created by those nearest highlighted lines with an added margin of 20 pixels
         cropped_image_with_margin = ImageCropper.crop_area_with_margin(image, nearest_top_line, nearest_bottom_line, nearest_left_line, nearest_right_line, margin=20)
-        ImageDisplayer.display_image(cropped_image_with_margin, 'Cropped Area with 20 Pixel Margin')
+        #ImageDisplayer.display_image(cropped_image_with_margin, 'Cropped Area with 20 Pixel Margin')
 
         # Extract the base name and extension of the file
-        base_name, ext = os.path.splitext(os.path.basename(image_path))
+        base_name, ext = os.path.splitext(os.path.basename(input_path))
         # Create the new file name with '_cropped' added
-        output_filename = f"{base_name}_cropped{ext}"
-        ImageSaver.save_image(cropped_image_with_margin, output_path, output_filename)
+        cropped_filename = f"cropped_{base_name}{ext}"
+        ImageSaver.save_image(cropped_image_with_margin, cropped_path, cropped_filename)
 
     else:
         print("No lines to merge")
 
     # Step 2: Load and process the cropped image
-    image, gray_image = ImageLoader.load_and_convert_image(output_path + output_filename)
+    image, gray_image = ImageLoader.load_and_convert_image(cropped_path + cropped_filename)
     edges = EdgeDetector.detect_edges(gray_image)
     lines = LineDetector.detect_lines(edges)
 
@@ -105,14 +106,15 @@ def main(image_path, output_path, edge_threshold1, edge_threshold2, hough_thresh
         image_with_squares, squares = SquareIdentifier.identify_and_label_squares(image_with_merged_lines, intersections, merged_horizontal_lines, merged_vertical_lines, aspect_ratio_tolerance=args.aspect_ratio_tolerance, min_area=args.min_area)
 
         # Show the cropped squares with margin and detected green cells
-        SquareDisplayer.show_cropped_squares(image, squares, margin=args.margin, min_area_threshold=args.min_area_threshold)
+        SquareDisplayer.show_cropped_squares(image, squares, margin=args.margin, min_area_threshold=args.min_area_threshold, save_path=args.output_path)
     else:
         print("No lines were detected.")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process and detect lines in an image.')
-    parser.add_argument('--image_path', type=str, required=True, help='Path to the image file')
-    parser.add_argument('--output_path', type=str, default='./data/cropped/', help='Path to the output directory')
+    parser.add_argument('--input_path', type=str, required=True, help='Path to the image file')
+    parser.add_argument('--cropped_path', type=str, default='./data/cropped/', help='Path to the cropped directory')
+    parser.add_argument('--output_path', type=str, default='./data/output/', help='Path to the output directory')
     parser.add_argument('--edge_threshold1', type=int, default=50, help='First threshold for the Canny edge detector')
     parser.add_argument('--edge_threshold2', type=int, default=150, help='Second threshold for the Canny edge detector')
     parser.add_argument('--hough_threshold', type=int, default=100, help='Threshold for the Hough line transform')
@@ -129,4 +131,4 @@ if __name__ == '__main__':
     parser.add_argument('--min_area_threshold', type=int, default=100, help='Minimum area threshold for green cell detection')
     args = parser.parse_args()
 
-    main(args.image_path, args.output_path, args.edge_threshold1, args.edge_threshold2, args.hough_threshold, args.min_line_length, args.max_line_gap, args.merge_threshold, args.gap_threshold_top, args.gap_threshold_bottom, args.gap_threshold_left, args.gap_threshold_right, args.margin, args.aspect_ratio_tolerance, args.min_area, args.min_area_threshold)
+    main(args.input_path, args.cropped_path, args.output_path, args.edge_threshold1, args.edge_threshold2, args.hough_threshold, args.min_line_length, args.max_line_gap, args.merge_threshold, args.gap_threshold_top, args.gap_threshold_bottom, args.gap_threshold_left, args.gap_threshold_right, args.margin, args.aspect_ratio_tolerance, args.min_area, args.min_area_threshold)
