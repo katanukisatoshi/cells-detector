@@ -142,6 +142,7 @@ Processes the image, detects edges and lines, merges lines, indexes and crops sq
 
 Special Thank to 
 - Master Huy Nguyen Tien Anh - Ho Chi Minh City - University of Sciences 
+- Minh Hoan - Fullstack Senior Developer
 
 Contributions are welcome! Please follow these steps to contribute:
 
