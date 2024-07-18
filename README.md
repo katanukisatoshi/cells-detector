@@ -127,7 +127,7 @@ This will process the image `1.jpg` in the `data/test/` directory, detect edges 
 
 Special Thank to
 - Master Huy Nguyen Tien Anh - Ho Chi Minh City - University of Sciences 
-- Katanuki - Fullstack Senior Developer
+- Minh Hoan - Fullstack Senior Developer
   
 Contributions are welcome! Please follow these steps to contribute:
 
