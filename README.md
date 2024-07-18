@@ -1,4 +1,4 @@
-# Green Cell Detection in Grid Squares
+Công # Green Cell Detection in Grid Squares
 
 Cells Detector is a Python-based application designed to detect and process plant cells in images. This tool leverages OpenCV and matplotlib for image processing, including edge and line detection, and cropping based on detected lines. It is built to run from the command line with customizable processing thresholds.
 
@@ -70,14 +70,14 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Running the Detector
+### Running the Cells Detector
 
-#### Step 1: Run the Crop Area Script
+#### Step: Run the application
 
-To run the crop area detection, use the `crop_area.py` script with the desired options:
+To run the crop area detection, use the `main.py` script with the desired options:
 
 ```sh
-python crop_area.py --image_path data/test/1.jpg --output_path data/cropped/
+python main.py --image_path data/test/1.jpg
 ```
 
 ##### Command Line Arguments
@@ -89,36 +89,19 @@ python crop_area.py --image_path data/test/1.jpg --output_path data/cropped/
 - `--hough_threshold`: Threshold for the Hough Line Transform (optional).
 - `--min_line_length`: Minimum length of a line (optional).
 - `--max_line_gap`: Maximum allowed gap between line segments to treat them as a single line (optional).
-- Other optional parameters are also available for fine-tuning the process.
-
-#### Step 2: Run the Cell Detector Script
-
-After cropping, run the `cell_detector.py` script on the cropped image:
-
-```sh
-python cell_detector.py --image_path data/cropped/1_cropped.jpg
-```
-
-##### Command Line Arguments
-
-- `--image_path`: Path to the cropped image file.
 - `--margin`: Margin for cell detection (optional).
 - `--aspect_ratio_tolerance`: Tolerance for the aspect ratio of detected cells (optional).
 - `--min_area`: Minimum area for detected cells (optional).
 - `--min_area_threshold`: Minimum area threshold for detected cells (optional).
+- Other optional parameters are also available for fine-tuning the process.
 
 ### Example
 
 Step-by-step example:
 
-1. Crop the image:
+1. Run the whole procedure:
    ```sh
-   python crop_area.py --image_path data/test/1.jpg --output_path data/cropped/
-   ```
-
-2. Detect cells in the cropped image:
-   ```sh
-   python cell_detector.py --image_path data/cropped/1_cropped.jpg
+   python main.py --image_path data/test/1.jpg --output_path data/cropped/
    ```
 
 This will process the image `1.jpg` in the `data/test/` directory, detect edges and lines, identify intersections, crop the image, and then detect cells in the cropped image saved in the `data/cropped/` directory.
