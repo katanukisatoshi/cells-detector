@@ -1,48 +1,55 @@
 # Green Cell Detection in Grid Squares
 
-This project provides a Python-based approach to detect and count green cells within grid squares of an image. Utilizing the powerful OpenCV library, various image processing tasks such as edge detection, line detection, and color-based segmentation are performed.
+Cells Detector is a Python-based application designed to detect and process plant cells in images. This tool leverages OpenCV and matplotlib for image processing, including edge and line detection, and cropping based on detected lines. It is built to run from the command line with customizable processing thresholds.
 
-Medium Post:
+## Medium Post:
 
 [Detecting Green Cells in Grid Squares: A Step-by-Step Guide with OpenCV and Python (Part 1)](https://medium.com/@katanuki/analyzing-and-processing-grid-images-with-opencv-part-1-d5c42ab0703c)
 
 [Detecting Green Cells in Grid Squares: A Step-by-Step Guide with OpenCV and Python (Part 2)](https://medium.com/@katanuki/analyzing-and-processing-grid-images-with-opencv-part-2-31408b5671a6)
 
+[Detecting Green Cells in Grid Squares: A Step-by-Step Guide with OpenCV and Python (Part 3)](https://medium.com/@katanuki/detecting-green-cells-in-grid-squares-a-step-by-step-guide-with-opencv-and-python-part-3-9a22979846d4)
+
+[Detecting Green Cells in Grid Squares: A Step-by-Step Guide with OpenCV and Python (Part 4)](https://medium.com/@katanuki/detecting-green-cells-in-grid-squares-a-step-by-step-guide-with-opencv-and-python-end-c7c75714219f)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Installation](#installation)
 - [Usage](#usage)
-- [Functions](#functions)
-- [Examples](#examples)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
 
 This project demonstrates how to process an image to detect green cells within grid squares. The approach includes:
-- Loading and converting images
-- Detecting edges and lines
-- Merging nearby lines
-- Indexing and cropping grid squares
-- Detecting green cells within each square
-- Displaying results with annotated images
 
-## Installation
+**- Edge Detection**: Identify edges in images using various edge detection algorithms.
 
-Follow these steps to set up your development environment and run the project.
+**- Line Detection**: Detect horizontal and vertical lines in images.
+
+**- Line Merging and Filtering**: Merge and filter lines based on specific criteria.
+
+**- Intersection Finding**: Identify intersections of horizontal and vertical lines.
+
+**- Square Processing**: Identify squares formed by intersecting lines and label them.
+
+**- Image Cropping**: Crop images based on detected lines and save the results.
+
+**- Dectect Green Cells**: Detecting green cells within each square.
+
+
 
 ## Prerequisites
 
-Ensure you have Python installed on your system. This project requires Python 3.6 or newer.
+Ensure you have Python installed on your system. This project requires Python 3.8 or newer.
 
 ## Setting Up a Virtual Environment
 
 To get started with this project, clone the repository and install the required dependencies.
 
 ```bash
-git clone https://github.com/takanukisatoshi/green-cell-detection.git
-cd green-cell-detection
+git clone https://github.com/yourusername/cells_detector.git
+cd cells_detector
 ```
 
 It's recommended to use a virtual environment to manage the dependencies for your project. You can set up a virtual environment using the following commands:
@@ -71,78 +78,65 @@ pip install -r requirements.txt
 
 ## Usage
 
-To run the script, use the following command:
+### Running the Detector
 
-```bash
-python detect_cells.py --image_path path/to/your/image.jpg --num_squares all --min_area_threshold 100
+#### Step 1: Run the Crop Area Script
 
-# Example
-# Without plot display:
-python detect_cells.py --image_path ./test/1.jpg --min_area_threshold 100
+To run the crop area detection, use the `crop_area.py` script with the desired options:
 
-# With plot display (first 5 detected squares)
-python detect_cells_display.py --image_path ./test/1.jpg --num_squares 5 --min_area_threshold 100
+```sh
+python crop_area.py --image_path data/test/1.jpg --output_path data/cropped/
 ```
 
-### Arguments
+##### Command Line Arguments
 
-- `--image_path`: Path to the input image (required).
-- `--num_squares`: Number of squares to process (default: `'all'`).
-- `--min_area_threshold`: Minimum area threshold for detecting green cells (default: `100`).
+- `--image_path`: Path to the input image file.
+- `--output_path`: Directory to save the cropped images.
+- `--edge_threshold1`: First threshold for the hysteresis procedure in edge detection (optional).
+- `--edge_threshold2`: Second threshold for the hysteresis procedure in edge detection (optional).
+- `--hough_threshold`: Threshold for the Hough Line Transform (optional).
+- `--min_line_length`: Minimum length of a line (optional).
+- `--max_line_gap`: Maximum allowed gap between line segments to treat them as a single line (optional).
+- Other optional parameters are also available for fine-tuning the process.
 
-## Functions
+#### Step 2: Run the Cell Detector Script
 
-### `load_and_convert_image(image_path)`
+After cropping, run the `cell_detector.py` script on the cropped image:
 
-Loads and converts an image to grayscale.
+```sh
+python cell_detector.py --image_path data/cropped/1_cropped.jpg
+```
 
-### `detect_edges(gray_image, threshold1=50, threshold2=150)`
+##### Command Line Arguments
 
-Detects edges in a grayscale image using the Canny algorithm.
+- `--image_path`: Path to the cropped image file.
+- `--margin`: Margin for cell detection (optional).
+- `--aspect_ratio_tolerance`: Tolerance for the aspect ratio of detected cells (optional).
+- `--min_area`: Minimum area for detected cells (optional).
+- `--min_area_threshold`: Minimum area threshold for detected cells (optional).
 
-### `detect_lines(edges, threshold=100, min_line_length=100, max_line_gap=10)`
+### Example
 
-Detects lines in an edge-detected image using the Hough Line Transform.
+Step-by-step example:
 
-### `merge_nearest_lines(lines, image, threshold=50)`
+1. Crop the image:
+   ```sh
+   python crop_area.py --image_path data/test/1.jpg --output_path data/cropped/
+   ```
 
-Merges nearby lines to reduce redundancy.
+2. Detect cells in the cropped image:
+   ```sh
+   python cell_detector.py --image_path data/cropped/1_cropped.jpg
+   ```
 
-### `index_and_crop_squares(image, horizontal_lines, vertical_lines)`
-
-Indexes and crops squares based on detected and merged lines.
-
-### `detect_green_cells(image, min_area_threshold=100)`
-
-Detects green cells in an image and filters them based on area.
-
-### `index_squares(image, horizontal_lines, vertical_lines)`
-
-Indexes squares on the image.
-
-### `process_and_display_images(image_path, num_squares='all', min_area_threshold=100)`
-
-Processes the image, detects edges and lines, merges lines, indexes and crops squares, detects green cells, and displays the results.
-
-## Examples
-
-### Original, Edges, Detected Lines & Merged Lines
-![Figure 01](examples/figure_1.png)
-
-### Indexed Squares
-![Figure 02](examples/figure_2.png)
-
-### Sample Cropped Squares
-![Figure 03](examples/figure_3.png)
-
-### Detected Green Cells
-![Figure 04](examples/figure_4.png)
+This will process the image `1.jpg` in the `data/test/` directory, detect edges and lines, identify intersections, crop the image, and then detect cells in the cropped image saved in the `data/cropped/` directory.
 
 ## Contributing
 
-Special Thank to 
+Special Thank to
 - Master Huy Nguyen Tien Anh - Ho Chi Minh City - University of Sciences 
-
+- Katanuki - Fullstack Senior Developer
+  
 Contributions are welcome! Please follow these steps to contribute:
 
 1. Fork the repository.
