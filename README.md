@@ -1,4 +1,4 @@
-Công # Green Cell Detection in Grid Squares
+# Green Cell Detection in Grid Squares
 
 Cells Detector is a Python-based application designed to detect and process plant cells in images. This tool leverages OpenCV and matplotlib for image processing, including edge and line detection, and cropping based on detected lines. It is built to run from the command line with customizable processing thresholds.
 
