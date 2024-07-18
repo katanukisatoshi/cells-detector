@@ -23,21 +23,13 @@ Cells Detector is a Python-based application designed to detect and process plan
 
 This project demonstrates how to process an image to detect green cells within grid squares. The approach includes:
 
-**- Edge Detection**: Identify edges in images using various edge detection algorithms.
-
-**- Line Detection**: Detect horizontal and vertical lines in images.
-
-**- Line Merging and Filtering**: Merge and filter lines based on specific criteria.
-
-**- Intersection Finding**: Identify intersections of horizontal and vertical lines.
-
-**- Square Processing**: Identify squares formed by intersecting lines and label them.
-
-**- Image Cropping**: Crop images based on detected lines and save the results.
-
-**- Dectect Green Cells**: Detecting green cells within each square.
-
-
+- Edge Detection: Identify edges in images using various edge detection algorithms.
+- Line Detection: Detect horizontal and vertical lines in images.
+- Line Merging and Filtering: Merge and filter lines based on specific criteria.
+- Intersection Finding: Identify intersections of horizontal and vertical lines.
+- Square Processing: Identify squares formed by intersecting lines and label them.
+- Image Cropping: Crop images based on detected lines and save the results.
+- Dectect Green Cells: Detecting green cells within each square.
 
 ## Prerequisites
 
