@@ -40,7 +40,7 @@ Ensure you have Python installed on your system. This project requires Python 3.
 To get started with this project, clone the repository and install the required dependencies.
 
 ```bash
-git clone https://github.com/yourusername/cells_detector.git
+git clone https://github.com/katanukisatoshi/cells_detector.git
 cd cells_detector
 ```
 
