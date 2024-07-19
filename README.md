@@ -113,17 +113,23 @@ This command will launch a web interface where users can upload an image, adjust
 
 ## Examples
 
-### Original, Edges, Detected Lines & Merged Lines
-![Figure 01](examples/figure_1.png)
+### Detected Lines & Merged Lines
+![Figure 01](examples/figure_01.png)
 
-### Indexed Squares
-![Figure 02](examples/figure_2.png)
+### Detected Potential Area
+![Figure 02](examples/figure_02.png)
 
-### Sample Cropped Squares
-![Figure 03](examples/figure_3.png)
+### Cropped Potential Area
+![Figure 03](examples/figure_03.png)
 
-### Detected Green Cells
-![Figure 04](examples/figure_4.png)
+### Detected Lines and Intersections
+![Figure 04](examples/figure_04.png)
+
+### Detected Squares and Indexing
+![Figure 05](examples/figure_05.png)
+
+### Detected Green Cells on Squares
+![Figure 06](examples/figure_06.png)
 
 ## Contributing
 
