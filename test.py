@@ -63,9 +63,9 @@ def main(input_path, cropped_path, output_path, edge_threshold1, edge_threshold2
         image_with_filtered_left_lines = LineHighlighter.change_color_of_filtered_lines(image_with_filtered_right_lines, filtered_left_lines, is_horizontal=False)
         image_with_filtered_left_lines = LineHighlighter.highlight_nearest_center_line_after_filtering(image_with_filtered_left_lines, filtered_left_lines, is_horizontal=False)
         #ImageDisplayer.display_image(image_with_filtered_left_lines, 'Filtered Left Lines Colored and Nearest Highlighted')
-        
+
         # IMPORTANT
-        #ImageDisplayer.display_image(image_with_filtered_left_lines, 'Filtered All Lines Colored and Nearest Highlighted')
+        ImageDisplayer.display_image(image_with_filtered_left_lines, 'Filtered All Lines Colored and Nearest Highlighted')
 
         # Find the nearest lines to the center from each side
         nearest_top_line = min(filtered_top_lines, key=lambda y: abs(y - image.shape[0] // 2))
@@ -75,11 +75,11 @@ def main(input_path, cropped_path, output_path, edge_threshold1, edge_threshold2
 
         # Cover the area created by those nearest highlighted lines
         image_with_covered_area = ImageCropper.cover_area_by_nearest_lines(image_with_filtered_left_lines, nearest_top_line, nearest_bottom_line, nearest_left_line, nearest_right_line, color=(255, 0, 0), thickness=-1)
-        #ImageDisplayer.display_image(image_with_covered_area, 'Covered Area by Nearest Highlighted Lines')
+        ImageDisplayer.display_image(image_with_covered_area, 'Covered Area by Nearest Highlighted Lines')
 
         # Crop the area created by those nearest highlighted lines with an added margin of 20 pixels
         cropped_image_with_margin = ImageCropper.crop_area_with_margin(image, nearest_top_line, nearest_bottom_line, nearest_left_line, nearest_right_line, margin=20)
-        #ImageDisplayer.display_image(cropped_image_with_margin, 'Cropped Area with 20 Pixel Margin')
+        ImageDisplayer.display_image(cropped_image_with_margin, 'Cropped Area with 20 Pixel Margin')
 
         # Extract the base name and extension of the file
         base_name, ext = os.path.splitext(os.path.basename(input_path))
@@ -106,7 +106,7 @@ def main(input_path, cropped_path, output_path, edge_threshold1, edge_threshold2
         image_with_squares, squares = SquareIdentifier.identify_and_label_squares(image_with_merged_lines, intersections, merged_horizontal_lines, merged_vertical_lines, aspect_ratio_tolerance=args.aspect_ratio_tolerance, min_area=args.min_area)
 
         # Show the cropped squares with margin and detected green cells
-        SquareDisplayer.show_cropped_squares(image, squares, margin=args.margin, min_area_threshold=args.min_area_threshold, save_path=args.output_path)
+        SquareDisplayer.show_cropped_squares(image, squares, margin=args.margin, min_area_threshold=args.min_area_threshold)
     else:
         print("No lines were detected.")
 
