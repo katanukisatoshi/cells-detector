@@ -109,6 +109,22 @@ Run the streamlit UI:
    
 This command will launch a web interface where users can upload an image, adjust parameters, and view the results interactively.
 
+![Streamlit UI](examples/streamlit_ui.png)
+
+## Examples
+
+### Original, Edges, Detected Lines & Merged Lines
+![Figure 01](examples/figure_1.png)
+
+### Indexed Squares
+![Figure 02](examples/figure_2.png)
+
+### Sample Cropped Squares
+![Figure 03](examples/figure_3.png)
+
+### Detected Green Cells
+![Figure 04](examples/figure_4.png)
+
 ## Contributing
 
 Special Thank to
