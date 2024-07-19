@@ -72,13 +72,15 @@ pip install -r requirements.txt
 
 ### Running the Cells Detector
 
-#### Step: Run the application
+#### Run the application
 
 To run the crop area detection and then detect green cells in all cropped squares, use the `main.py` script with the desired options:
 
 ```sh
 python main.py --input_path data/test/1.jpg
 ```
+
+This will process the image `1.jpg` in the `data/test/` directory, detect edges and lines, identify intersections, crop the image, and then detect cells in the cropped image saved in the `data/cropped/` directory. You can check the cropped image manually. The results of green cells detector will be saved in the `data/output/`
 
 ##### Command Line Arguments
 
@@ -95,16 +97,16 @@ python main.py --input_path data/test/1.jpg
 - `--min_area_threshold`: Minimum area threshold for detected cells (optional).
 - Other optional parameters are also available for fine-tuning the process.
 
-### Example
+### Streamlit Interface
 
-Step-by-step example:
+Mention how users can run the Streamlit interface and what to expect from it:
 
-1. Run the whole procedure:
+1. Run the streamlit UI:
    ```sh
-   python main.py --image_path data/test/1.jpg --output_path data/cropped/
+   streamlit run user_interface.py
    ```
-
-This will process the image `1.jpg` in the `data/test/` directory, detect edges and lines, identify intersections, crop the image, and then detect cells in the cropped image saved in the `data/cropped/` directory. You can check the cropped image manually.
+   
+This command will launch a web interface where users can upload an image, adjust parameters, and view the results interactively.
 
 ## Contributing
 
