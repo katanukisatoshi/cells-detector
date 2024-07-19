@@ -77,7 +77,7 @@ pip install -r requirements.txt
 To run the crop area detection and then detect green cells in all cropped squares, use the `main.py` script with the desired options:
 
 ```sh
-python main.py --image_path data/test/1.jpg
+python main.py --input_path data/test/1.jpg
 ```
 
 ##### Command Line Arguments
