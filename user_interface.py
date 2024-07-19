@@ -25,7 +25,7 @@ if uploaded_file is not None:
     # Parameters input
     st.sidebar.title('Parameters')
     edge_threshold1 = st.sidebar.slider('Edge Threshold 1', 0, 255, 50)
-    edge_threshold2 = st.sidebar.slider('Edge Threshold 2', 0, 255, 150)
+    edge_threshold2 = st.sidebar.slider('Edge Threshold 2', 0, 255, 110)
     hough_threshold = st.sidebar.slider('Hough Threshold', 0, 255, 100)
     min_line_length = st.sidebar.slider('Min Line Length', 0, 500, 100)
     max_line_gap = st.sidebar.slider('Max Line Gap', 0, 100, 10)

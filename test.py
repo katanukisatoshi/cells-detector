@@ -14,14 +14,14 @@ def main(input_path, cropped_path, output_path, edge_threshold1, edge_threshold2
     image, gray_image = ImageLoader.load_and_convert_image(input_path)
 
     # Display the original image
-    #ImageDisplayer.display_image(image, 'Original Image')
+    ImageDisplayer.display_image(image, 'Original Image')
 
     # Display the grayscale image
-    #ImageDisplayer.display_gray_image(gray_image, 'Grayscale Image')
+    ImageDisplayer.display_gray_image(gray_image, 'Grayscale Image')
 
     # Detect edges in the grayscale image
     edges = EdgeDetector.detect_edges(gray_image, threshold1=edge_threshold1, threshold2=edge_threshold2)
-    #ImageDisplayer.display_gray_image(edges, 'Edge Detection')
+    ImageDisplayer.display_gray_image(edges, 'Edge Detection')
 
     # Detect lines in the edge-detected image
     lines = LineDetector.detect_lines(edges, threshold=hough_threshold, min_line_length=min_line_length, max_line_gap=max_line_gap)
@@ -30,14 +30,14 @@ def main(input_path, cropped_path, output_path, edge_threshold1, edge_threshold2
         for line in lines:
             x1, y1, x2, y2 = line[0]
             cv2.line(image_with_lines, (x1, y1), (x2, y2), (0, 255, 0), 2)
-        #ImageDisplayer.display_image(image_with_lines, 'Detected Lines')
+        ImageDisplayer.display_image(image_with_lines, 'Detected Lines')
     else:
         print("No lines detected")
 
     # Merge nearest lines
     if lines is not None:
         image_with_merged_lines, merged_horizontal_lines, merged_vertical_lines = LineMerger.merge_nearest_lines(lines, image, threshold=merge_threshold)
-        #ImageDisplayer.display_image(image_with_merged_lines, 'Merged Lines')
+        ImageDisplayer.display_image(image_with_merged_lines, 'Merged Lines')
 
         # Filter and highlight nearest lines to center in each step
         # Top lines
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     parser.add_argument('--cropped_path', type=str, default='./data/cropped/', help='Path to the cropped directory')
     parser.add_argument('--output_path', type=str, default='./data/output/', help='Path to the output directory')
     parser.add_argument('--edge_threshold1', type=int, default=50, help='First threshold for the Canny edge detector')
-    parser.add_argument('--edge_threshold2', type=int, default=110, help='Second threshold for the Canny edge detector')
+    parser.add_argument('--edge_threshold2', type=int, default=150, help='Second threshold for the Canny edge detector')
     parser.add_argument('--hough_threshold', type=int, default=100, help='Threshold for the Hough line transform')
     parser.add_argument('--min_line_length', type=int, default=100, help='Minimum line length for the Hough line transform')
     parser.add_argument('--max_line_gap', type=int, default=10, help='Maximum line gap for the Hough line transform')
