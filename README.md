@@ -101,7 +101,8 @@ This will process the image `1.jpg` in the `data/test/` directory, detect edges 
 
 Mention how users can run the Streamlit interface and what to expect from it:
 
-1. Run the streamlit UI:
+Run the streamlit UI:
+
    ```sh
    streamlit run user_interface.py
    ```
