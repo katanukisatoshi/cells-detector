@@ -97,20 +97,6 @@ This will process the image `1.jpg` in the `data/test/` directory, detect edges 
 - `--min_area_threshold`: Minimum area threshold for detected cells (optional).
 - Other optional parameters are also available for fine-tuning the process.
 
-### Streamlit Interface
-
-Mention how users can run the Streamlit interface and what to expect from it:
-
-Run the streamlit UI:
-
-   ```sh
-   streamlit run user_interface.py
-   ```
-   
-This command will launch a web interface where users can upload an image, adjust parameters, and view the results interactively.
-
-![Streamlit UI](examples/streamlit_ui.png)
-
 ## Examples
 
 ### Detected Lines & Merged Lines
@@ -130,6 +116,20 @@ This command will launch a web interface where users can upload an image, adjust
 
 ### Detected Green Cells on Squares
 ![Figure 06](examples/figure_06.png)
+
+## Streamlit Interface
+
+Mention how users can run the Streamlit interface and what to expect from it:
+
+Run the streamlit UI:
+
+   ```sh
+   streamlit run user_interface.py
+   ```
+   
+This command will launch a web interface where users can upload an image, adjust parameters, and view the results interactively.
+
+![Streamlit UI](examples/streamlit_ui.png)
 
 ## Contributing
 
