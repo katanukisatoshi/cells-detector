@@ -135,7 +135,7 @@ This command will launch a web interface where users can upload an image, adjust
 
 Special Thank to
 - Master Huy Nguyen Tien Anh - Ho Chi Minh City - University of Sciences 
-- Kai - Fullstack Senior Developer
+- Shio Freecss - Fullstack Senior Developer
   
 Contributions are welcome! Please follow these steps to contribute:
 
